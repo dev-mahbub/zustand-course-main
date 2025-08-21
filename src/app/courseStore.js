@@ -24,6 +24,8 @@ const courseStore = (set) => ({
   },
 });
 
+//zustand create
+
 const useCourseStore = create(
   devtools(
     persist(courseStore, {
