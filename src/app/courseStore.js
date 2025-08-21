@@ -8,16 +8,16 @@ const courseStore = (set) => ({
       courses: [course, ...state.courses],
     }));
   },
-  removeCourses: (coursesId) => {
+  removeCourse: (coursesId) => {
     set((state) => ({
       courses: state.courses.filter((c) => c.id !== coursesId),
     }));
   },
-  toggleCourses: (coursesId) => {
+  toggleCourseStatus: (coursesId) => {
     set((state) => ({
       courses: state.courses.map((course) =>
         course.id === coursesId
-          ? { ...course, coursesId: !course.coursesId }
+          ? { ...course, completed: !course.completed }
           : course
       ),
     }));
