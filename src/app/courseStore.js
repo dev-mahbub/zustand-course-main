@@ -17,7 +17,7 @@ const courseStore = (set) => ({
     set((state) => ({
       courses: state.courses.map((course) =>
         course.id === coursesId
-          ? { ...course, courseId: !course.courseId }
+          ? { ...course, coursesId: !course.coursesId }
           : course
       ),
     }));
