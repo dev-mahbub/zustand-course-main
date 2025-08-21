@@ -2,34 +2,26 @@ import { useState } from "react";
 import useCourseStore from "../app/courseStore";
 
 const CourseForm = () => {
-  const addCourse = useCourseStore((state) => state.addCourses);
+  const addCourse = useCourseStore((state) => state.addCourse);
   const [courseTitle, setCourseTitle] = useState("");
-
   const handleCourseSubmit = () => {
-    if (courseTitle) {
-      console.log("CourseForm Rendered");
-      addCourse({
-        id: Math.ceil(Math.random() * 1000000),
-        title: courseTitle,
-      });
-      setCourseTitle("");
+    if (!courseTitle) {
+      console.log("CoursesForm Rendered");
     }
+    addCourse({
+      id: Math.ceil(Math.random() * 1000000),
+      title: courseTitle,
+    });
+    setCourseTitle("");
   };
   return (
     <div className="form-container">
       <input
         value={courseTitle}
-        onChange={(e) => {
-          setCourseTitle(e.target.value);
-        }}
+        onChange={(e) => setCourseTitle(e.target.value)}
         className="form-input"
       />
-      <button
-        onClick={() => {
-          handleCourseSubmit();
-        }}
-        className="form-submit-btn"
-      >
+      <button onClick={handleCourseSubmit} className="form-submit-btn">
         Add Course
       </button>
     </div>

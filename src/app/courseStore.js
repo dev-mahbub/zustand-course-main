@@ -1,22 +1,23 @@
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
-const courseStore = (set) => ({
+const coursesStore = (set) => ({
   courses: [],
-  addCourses: (course) => {
+  addCourse: (course) => {
     set((state) => ({
       courses: [course, ...state.courses],
     }));
   },
-  removeCourse: (coursesId) => {
+  removeCourse: (courseId) => {
     set((state) => ({
-      courses: state.courses.filter((c) => c.id !== coursesId),
+      courses: state.courses.filter((c) => c.id !== courseId),
     }));
   },
-  toggleCourseStatus: (coursesId) => {
+
+  toggleCourseStatus: (courseId) => {
     set((state) => ({
       courses: state.courses.map((course) =>
-        course.id === coursesId
+        course.id === courseId
           ? { ...course, completed: !course.completed }
           : course
       ),
@@ -24,14 +25,12 @@ const courseStore = (set) => ({
   },
 });
 
-//zustand create
-
-const useCourseStore = create(
+const useCoursesStore = create(
   devtools(
-    persist(courseStore, {
-      name: "courses",
+    persist(coursesStore, {
+      name: "course",
     })
   )
 );
 
-export default useCourseStore;
+export default useCoursesStore;

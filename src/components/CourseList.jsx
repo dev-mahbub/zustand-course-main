@@ -6,7 +6,7 @@ const CourseList = () => {
     (state) => ({
       courses: state.courses,
       removeCourse: state.removeCourse,
-      toggleCoursesStatus: state.toggleCoursesStatus,
+      toggleCourseStatus: state.toggleCourseStatus,
     })
   );
   return (
