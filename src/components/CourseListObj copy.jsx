@@ -1,15 +1,16 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from "react";
-import useCoursesStore from "../app/courseStoreObject";
+import useCoursesStoreObj from "../app/courseStoreObject";
 
 const CourseListObj = () => {
-  const { courses, removeCourse, toggleCoursesState } = useCoursesStore(
+  const { courses, removeCourse, toggleCoursesState } = useCoursesStoreObj(
     (state) => ({
       courses: state.courses,
       removeCourse: state.removeCourse,
       toggleCoursesState: state.toggleCourseState,
     })
   );
+  console.log(courses);
   return (
     <>
       <ul>

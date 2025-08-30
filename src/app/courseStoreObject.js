@@ -12,7 +12,7 @@ const courseStoreObject = (set) => ({
 
   removeCourse: (courseId) => {
     set((state) => {
-      const newCourses = { ...state.course };
+      const newCourses = { ...state.courses };
       delete newCourses[courseId];
       return { courses: newCourses };
     });
@@ -20,9 +20,13 @@ const courseStoreObject = (set) => ({
 
   toggleCourseState: (courseId) => {
     set((state) => ({
-      ...state.courses,
-      ...state.courses[courseId],
-      completed: !state.courses[courseId].completed,
+      courses: {
+        ...state.courses,
+        [courseId]: {
+          ...state.courses[courseId],
+          completed: !state.courses[courseId].completed,
+        },
+      },
     }));
   },
 });

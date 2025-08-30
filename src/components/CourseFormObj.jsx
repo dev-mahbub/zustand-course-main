@@ -2,15 +2,19 @@ import { useState } from "react";
 import useCoursesStoreObj from "../app/courseStoreObject";
 
 const CourseFormObj = () => {
-  const { addCourse } = useCoursesStoreObj();
+  const { addCourse } = useCoursesStoreObj((state) => ({
+    addCourse: state.addCourse,
+  }));
   const [courseTitle, setCourseTitle] = useState("");
   const handleCourseSubmit = () => {
     if (!courseTitle) {
       console.log("CoursesForm Rendered");
+      return;
     }
     addCourse({
       id: Math.ceil(Math.random() * 1000000),
       title: courseTitle,
+      completed: false,
     });
     setCourseTitle("");
   };

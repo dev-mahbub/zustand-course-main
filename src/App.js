@@ -1,5 +1,6 @@
 import "./App.css";
 import CourseFormObj from "./components/CourseFormObj";
+import CourseListObj from "./components/CourseListObj";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         My Course list
       </h1>
       <CourseFormObj />
+      <CourseListObj />
     </div>
   );
 }
